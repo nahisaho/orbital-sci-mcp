@@ -1,0 +1,49 @@
+[
+  {
+    "_description": "mattersim_predict_energy: Si結晶のエネルギー・力・応力を計算",
+    "request": {
+      "tool_name": "mattersim_predict_energy",
+      "arguments": {
+        "structure_text": null,
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.35, 1.35, 1.35]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]],
+        "pbc": [true, true, true]
+      }
+    },
+    "response_example": {
+      "energy": -10.523,
+      "forces": [[0.012, -0.003, 0.008], [-0.012, 0.003, -0.008]],
+      "stress": [0.001, 0.001, 0.001, 0.0, 0.0, 0.0],
+      "structure": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.35, 1.35, 1.35]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]]
+      }
+    }
+  },
+  {
+    "_description": "mattersim_relax_structure: 構造緩和を実行",
+    "request": {
+      "tool_name": "mattersim_relax_structure",
+      "arguments": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.4, 1.4, 1.4]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]],
+        "pbc": [true, true, true],
+        "calculator_options": {
+          "fmax": 0.01,
+          "steps": 100
+        }
+      }
+    },
+    "response_example": {
+      "energy": -10.891,
+      "relaxed_structure": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.3575, 1.3575, 1.3575]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]]
+      }
+    }
+  }
+]

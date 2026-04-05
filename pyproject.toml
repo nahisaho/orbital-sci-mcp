@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbital-sci-mcp"
+version = "0.1.0"
+description = "MCP server for AI4Science tools referenced by orbital-sci-mcp"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastmcp>=2.12.3,<4.0.0",
+  "pydantic>=2.11,<3.0",
+]
+
+[project.optional-dependencies]
+materials = [
+  "ase>=3.23",
+  "mattersim",
+  "mattergen",
+  "mace-torch",
+]
+molecules = [
+  "rdkit",
+  "graphormer",
+]
+proteins = [
+  "bioemu",
+  "torch",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.12",
+]
+
+[project.scripts]
+orbital-sci-mcp = "orbital_sci_mcp.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

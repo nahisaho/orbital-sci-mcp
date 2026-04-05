@@ -1,0 +1,53 @@
+[
+  {
+    "_description": "graphormer_predict_property: fairseq evaluateによる分子特性予測",
+    "request": {
+      "tool_name": "graphormer_predict_property",
+      "arguments": {
+        "smiles": "CCO",
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dataset_name": "pcqm4m",
+          "dataset_source": "ogb",
+          "pretrained_model_name": "pcqm4mv1_graphormer_base",
+          "task": "graph_prediction",
+          "arch": "graphormer_base",
+          "num_classes": 1,
+          "batch_size": 64,
+          "split": "valid",
+          "seed": 1
+        }
+      }
+    },
+    "response_example": {
+      "workflow": "fairseq_evaluate",
+      "returncode": 0,
+      "stdout": "| Predicted ... valid on ...",
+      "stderr": "",
+      "command_summary": "python evaluate.py --user-dir ... --dataset-name pcqm4m ..."
+    }
+  },
+  {
+    "_description": "graphormer_predict_property: オプション指定なしのエラー例",
+    "request": {
+      "tool_name": "graphormer_predict_property",
+      "arguments": {
+        "smiles": "CCO"
+      }
+    },
+    "error_response_example": {
+      "code": "UNSUPPORTED_OPERATION",
+      "message": "Graphormer upstream exposes evaluation primarily through fairseq-based CLI workflows, not an ad hoc SMILES prediction API.",
+      "details": {
+        "tool_name": "graphormer_predict_property",
+        "supported_mode": "fairseq_evaluate",
+        "required_inference_options": [
+          "graphormer_repo_path",
+          "dataset_name",
+          "dataset_source",
+          "pretrained_model_name"
+        ]
+      }
+    }
+  }
+]

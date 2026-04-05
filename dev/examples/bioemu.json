@@ -1,0 +1,73 @@
+[
+  {
+    "_description": "bioemu_sample_ensemble: タンパク質配列からアンサンブル構造をサンプリング",
+    "request": {
+      "tool_name": "bioemu_sample_ensemble",
+      "arguments": {
+        "sequence": "MKTIIALSYIFCLVFA",
+        "sample_count": 10,
+        "inference_options": {
+          "model_name": "bioemu-v1.1",
+          "denoiser_type": "dpm",
+          "batch_size_100": 10,
+          "filter_samples": true
+        }
+      }
+    },
+    "response_example": {
+      "requested_count": 10,
+      "model_name": "bioemu-v1.1",
+      "artifacts": {
+        "topology_pdb_exists": true,
+        "samples_xtc_exists": true,
+        "sequence_fasta_exists": true
+      }
+    }
+  },
+  {
+    "_description": "bioemu_sample_ensemble: 永続出力ディレクトリ指定",
+    "request": {
+      "tool_name": "bioemu_sample_ensemble",
+      "arguments": {
+        "sequence": "MKTIIALSYIFCLVFA",
+        "sample_count": 5,
+        "inference_options": {
+          "output_dir": "/data/bioemu-results/run-001",
+          "model_name": "bioemu-v1.1"
+        }
+      }
+    },
+    "response_example": {
+      "requested_count": 5,
+      "model_name": "bioemu-v1.1",
+      "artifacts": {
+        "topology_pdb_exists": true,
+        "samples_xtc_exists": true,
+        "sequence_fasta_exists": true
+      },
+      "output_dir": "/data/bioemu-results/run-001",
+      "topology_pdb": "/data/bioemu-results/run-001/topology.pdb",
+      "samples_xtc": "/data/bioemu-results/run-001/samples.xtc",
+      "sequence_fasta": "/data/bioemu-results/run-001/sequence.fasta"
+    }
+  },
+  {
+    "_description": "bioemu_sample_ensemble: FASTA形式テキストからの入力",
+    "request": {
+      "tool_name": "bioemu_sample_ensemble",
+      "arguments": {
+        "fasta_text": ">protein_1\nMKTIIALSYIFCLVFA",
+        "sample_count": 3
+      }
+    },
+    "response_example": {
+      "requested_count": 3,
+      "model_name": "bioemu-v1.1",
+      "artifacts": {
+        "topology_pdb_exists": true,
+        "samples_xtc_exists": true,
+        "sequence_fasta_exists": true
+      }
+    }
+  }
+]

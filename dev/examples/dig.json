@@ -1,0 +1,125 @@
+[
+  {
+    "_description": "dig_sample_conformations: protein-ligand single datapoint sampling",
+    "request": {
+      "tool_name": "dig_sample_conformations",
+      "arguments": {
+        "conformer_count": 50,
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dig_workflow": "protein_ligand_single_datapoint",
+          "pdbid": "1a2k"
+        }
+      }
+    },
+    "response_example": {
+      "workflow": "protein_ligand_single_datapoint",
+      "pdbid": "1a2k",
+      "sample_count": 50,
+      "returncode": 0,
+      "stdout": "Sampling completed successfully...",
+      "stderr": ""
+    }
+  },
+  {
+    "_description": "dig_sample_conformations: protein system sampling",
+    "request": {
+      "tool_name": "dig_sample_conformations",
+      "arguments": {
+        "conformer_count": 3,
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dig_workflow": "protein_system_sampling",
+          "pdbid": "6lu7",
+          "checkpoint_path": null,
+          "feature_path": null,
+          "fasta_path": null,
+          "output_prefix": null
+        }
+      }
+    },
+    "response_example": {
+      "workflow": "protein_system_sampling",
+      "pdbid": "6lu7",
+      "sample_count": 3,
+      "returncode": 0,
+      "stdout": "Protein system sampling completed...",
+      "stderr": ""
+    }
+  },
+  {
+    "_description": "dig_sample_conformations: property-guided sampling",
+    "request": {
+      "tool_name": "dig_sample_conformations",
+      "arguments": {
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dig_workflow": "property_guided_sampling",
+          "num_gpus": 1,
+          "batch_size_per_gpu": 2,
+          "save_dir": "/tmp/dig-property-guided",
+          "num_atoms": 16,
+          "target_bandgap": 1.5
+        }
+      }
+    },
+    "response_example": {
+      "workflow": "property_guided_sampling",
+      "returncode": 0,
+      "stdout": "Property-guided sampling completed...",
+      "stderr": "",
+      "save_dir": "/tmp/dig-property-guided"
+    }
+  },
+  {
+    "_description": "dig_predict_equilibrium: catalyst adsorption density",
+    "request": {
+      "tool_name": "dig_predict_equilibrium",
+      "arguments": {
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dig_workflow": "catalyst_adsorption_density",
+          "num_gpus": 1,
+          "batch_size_per_gpu": 2,
+          "save_dir": "/tmp/dig-density",
+          "height_indices": [0, 1, 2]
+        }
+      }
+    },
+    "response_example": {
+      "workflow": "catalyst_adsorption_density",
+      "runs": [
+        {"height_index": 0, "returncode": 0, "stdout": "...", "stderr": ""},
+        {"height_index": 1, "returncode": 0, "stdout": "...", "stderr": ""},
+        {"height_index": 2, "returncode": 0, "stdout": "...", "stderr": ""}
+      ],
+      "summary": {
+        "requested_height_count": 3,
+        "completed_height_count": 3,
+        "successful_height_count": 3,
+        "failed_height_count": 0,
+        "last_completed_height_index": 2
+      }
+    }
+  },
+  {
+    "_description": "dig_predict_equilibrium: height_indices 空配列のエラー例",
+    "request": {
+      "tool_name": "dig_predict_equilibrium",
+      "arguments": {
+        "inference_options": {
+          "graphormer_repo_path": "/home/user/Graphormer",
+          "dig_workflow": "catalyst_adsorption_density",
+          "height_indices": []
+        }
+      }
+    },
+    "error_response_example": {
+      "code": "INPUT_VALIDATION_FAILED",
+      "message": "height_indices must be a non-empty list of integers for the catalyst adsorption density workflow.",
+      "details": {
+        "height_indices": []
+      }
+    }
+  }
+]

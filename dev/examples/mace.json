@@ -1,0 +1,42 @@
+[
+  {
+    "_description": "mace_predict_energy: MACE-MPによるエネルギー予測",
+    "request": {
+      "tool_name": "mace_predict_energy",
+      "arguments": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.35, 1.35, 1.35]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]],
+        "pbc": [true, true, true]
+      }
+    },
+    "response_example": {
+      "energy": -10.234,
+      "structure": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.35, 1.35, 1.35]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]]
+      }
+    }
+  },
+  {
+    "_description": "mace_calculate_forces: MACE-MPによる原子間力の計算",
+    "request": {
+      "tool_name": "mace_calculate_forces",
+      "arguments": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.4, 1.4, 1.4]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]],
+        "pbc": [true, true, true]
+      }
+    },
+    "response_example": {
+      "forces": [[0.15, 0.15, 0.15], [-0.15, -0.15, -0.15]],
+      "structure": {
+        "atomic_numbers": [14, 14],
+        "positions": [[0.0, 0.0, 0.0], [1.4, 1.4, 1.4]],
+        "cell": [[5.43, 0.0, 0.0], [0.0, 5.43, 0.0], [0.0, 0.0, 5.43]]
+      }
+    }
+  }
+]

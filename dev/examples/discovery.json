@@ -1,0 +1,72 @@
+[
+  {
+    "_description": "list_tools: 登録済みツール一覧を取得",
+    "request": {
+      "tool_name": "list_tools",
+      "arguments": {}
+    },
+    "response_example": {
+      "tools": [
+        {
+          "name": "mattersim_predict_energy",
+          "description": "MatterSim を使用して結晶構造のエネルギー・力・応力を計算する",
+          "category": "materials",
+          "available": true
+        },
+        {
+          "name": "mattergen_generate_material",
+          "description": "MatterGen による結晶構造生成",
+          "category": "materials",
+          "available": false
+        }
+      ]
+    }
+  },
+  {
+    "_description": "search_tools: 名前やカテゴリの部分一致検索",
+    "request": {
+      "tool_name": "search_tools",
+      "arguments": {
+        "query": "energy"
+      }
+    },
+    "response_example": {
+      "tools": [
+        {
+          "name": "mattersim_predict_energy",
+          "description": "MatterSim を使用して結晶構造のエネルギー・力・応力を計算する",
+          "category": "materials",
+          "available": true
+        },
+        {
+          "name": "mace_predict_energy",
+          "description": "MACE によるエネルギー予測",
+          "category": "materials",
+          "available": true
+        }
+      ]
+    }
+  },
+  {
+    "_description": "get_tool_info: 特定ツールの詳細情報",
+    "request": {
+      "tool_name": "get_tool_info",
+      "arguments": {
+        "tool_name": "bioemu_sample_ensemble"
+      }
+    },
+    "response_example": {
+      "name": "bioemu_sample_ensemble",
+      "description": "BioEmuによるタンパク質アンサンブル構造サンプリング",
+      "category": "proteins",
+      "available": false,
+      "required_packages": ["bioemu"],
+      "gpu_required": true,
+      "input_schema": {
+        "sequence": "string (required)",
+        "sample_count": "integer (default: 1)",
+        "inference_options": "object (optional)"
+      }
+    }
+  }
+]

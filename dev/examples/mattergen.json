@@ -1,0 +1,68 @@
+[
+  {
+    "_description": "mattergen_generate_material: プロンプトで結晶構造を生成",
+    "request": {
+      "tool_name": "mattergen_generate_material",
+      "arguments": {
+        "prompt": "stable perovskite with high dielectric constant",
+        "sample_count": 3
+      }
+    },
+    "response_example": {
+      "generated_candidates": [
+        {
+          "formula": "BaTiO3",
+          "num_sites": 5,
+          "lattice": [[4.0, 0.0, 0.0], [0.0, 4.0, 0.0], [0.0, 0.0, 4.0]],
+          "species": ["Ba", "Ti", "O", "O", "O"],
+          "frac_coords": [
+            [0.0, 0.0, 0.0],
+            [0.5, 0.5, 0.5],
+            [0.5, 0.5, 0.0],
+            [0.5, 0.0, 0.5],
+            [0.0, 0.5, 0.5]
+          ]
+        }
+      ],
+      "returned_count": 3,
+      "requested_count": 3,
+      "constraints": {}
+    }
+  },
+  {
+    "_description": "mattergen_generate_material: 物性制約付き生成",
+    "request": {
+      "tool_name": "mattergen_generate_material",
+      "arguments": {
+        "constraints": {
+          "pretrained_name": "mattergen_base",
+          "properties_to_condition_on": {
+            "bandgap": 1.5
+          },
+          "target_compositions": ["Si", "Ge"],
+          "diffusion_guidance_factor": 2.0
+        },
+        "sample_count": 5
+      }
+    },
+    "response_example": {
+      "generated_candidates": [
+        {
+          "formula": "SiGe",
+          "num_sites": 2,
+          "lattice": [[5.5, 0.0, 0.0], [0.0, 5.5, 0.0], [0.0, 0.0, 5.5]],
+          "species": ["Si", "Ge"],
+          "frac_coords": [[0.0, 0.0, 0.0], [0.5, 0.5, 0.5]]
+        }
+      ],
+      "returned_count": 5,
+      "requested_count": 5,
+      "constraints": {
+        "pretrained_name": "mattergen_base",
+        "properties_to_condition_on": {"bandgap": 1.5},
+        "target_compositions": ["Si", "Ge"],
+        "diffusion_guidance_factor": 2.0
+      }
+    }
+  }
+]
