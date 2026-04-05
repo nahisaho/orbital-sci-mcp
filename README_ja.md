@@ -35,6 +35,24 @@ orbital-sci-mcp は、Microsoft Foundry エコシステムで提供される AI 
 
 - bioemu_sample_ensemble（GPU 必須）
 
+## 対応している Microsoft AI Foundry AI for Science Tools
+
+本サーバーが現在連携している Microsoft AI Foundry の AI for Science ツール系統は以下です。
+
+| Foundry ツール系統 | 本サーバーで公開している MCP ツール | 現在の連携方式 |
+|---|---|---|
+| MatterSim | mattersim_predict_energy, mattersim_relax_structure | Python アダプター |
+| MatterGen | mattergen_generate_material | Python アダプター |
+| MACE | mace_predict_energy, mace_calculate_forces | Python アダプター |
+| Graphormer | graphormer_predict_property | fairseq evaluate workflow 起動 |
+| DiG (Distributional Graphormer) | dig_sample_conformations, dig_predict_equilibrium | task/workflow スクリプト起動 |
+| BioEmu | bioemu_sample_ensemble | Python アダプター（GPU 必須） |
+
+補足:
+
+- 一部バックエンドはローカルのリポジトリ資材や GPU 実行環境を必要とします。
+- ツール利用可否は実行時に判定され、MCP の構造化レスポンスとして返されます。
+
 ## ビルドとインストール
 
 ### 1) 前提

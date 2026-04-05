@@ -35,6 +35,24 @@ Current registry includes 9 scientific tools across 3 domains.
 
 - bioemu_sample_ensemble (GPU-required)
 
+## Supported Microsoft AI Foundry AI for Science Tools
+
+This server currently integrates the following Microsoft AI Foundry AI for Science tool families:
+
+| Foundry tool family | Exposed MCP tools in this server | Current integration mode |
+|---|---|---|
+| MatterSim | mattersim_predict_energy, mattersim_relax_structure | Python adapter |
+| MatterGen | mattergen_generate_material | Python adapter |
+| MACE | mace_predict_energy, mace_calculate_forces | Python adapter |
+| Graphormer | graphormer_predict_property | fairseq evaluate workflow launcher |
+| DiG (Distributional Graphormer) | dig_sample_conformations, dig_predict_equilibrium | task/workflow script launcher |
+| BioEmu | bioemu_sample_ensemble | Python adapter (GPU required) |
+
+Notes:
+
+- Some backends require local repository artifacts and/or GPU runtime.
+- Tool availability is checked at runtime and returned via structured MCP responses.
+
 ## Build and Install
 
 ### 1) Requirements
